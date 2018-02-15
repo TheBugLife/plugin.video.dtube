@@ -1,45 +1,45 @@
--Sync STEEM account
--Trending / Hot / New
--Repost / Resteem
--KODI acceptance
--Ability to Vote Up or Down
--Ability to select Vote Strength
--Keep secure. Only request posting key?
--Search videos for keywords
--Hashtag Context Button
+- Sync STEEM account
+- Trending / Hot / New
+- Repost / Resteem
+- KODI acceptance
+- Ability to Vote Up or Down
+- Ability to select Vote Strength
+- Keep secure. Only request posting key?
+- Search videos for keywords
+- Hashtag Context Button
 - Easy Account Integration (QR Code? Sign in API?)
--Author Pages
--IPFS Node
--Subscriptions?
--Follow / Unfollow
--Display video age
--Launch Video
--Python 2/3 versions
--Send to KODI from phone
+- Author Pages
+- IPFS Node
+- Subscriptions?
+- Follow / Unfollow
+- Display video age
+- Launch Video
+- Python 2/3 versions
+- Send to KODI from phone
 - Custom IPFS gateway
 - Watched / Unwatched
 - KORE Compatibility
--Potentially add D.Live streaming support?
--Understand proper search criteria
--Bookmark
--Download Torrent
--History
--Front Page
--Comments (Create / Browse / Vote)
--Video Details / Description
--Replies / Notifications
--Realtime Quality Adjustment
--Recommended Videos
--Playlists
--watch Later
--Resume
--Mozilla Plugin?
--Resteem
--Thumbnails/List View Options
--Share Video (email/riot/etc.)
--Show Post Value.
--Unit Conversions (USD/CAD/BTC/STEEM/etc...)
--Stylish User Interface
--Homepage summary (news,account value/summary,analysis,notifications?)
--NSFW Tag / Options
+- Potentially add D.Live streaming support?
+- Understand proper search criteria
+- Bookmark
+- Download Torrent
+- History
+- Front Page
+- Comments (Create / Browse / Vote)
+- Video Details / Description
+- Replies / Notifications
+- Realtime Quality Adjustment
+- Recommended Videos
+- Playlists
+- watch Later
+- Resume
+- Mozilla Plugin?
+- Resteem
+- Thumbnails/List View Options
+- Share Video (email/riot/etc.)
+- Show Post Value.
+- Unit Conversions (USD/CAD/BTC/STEEM/etc...)
+- Stylish User Interface
+- Homepage summary (news,account value/summary,analysis,notifications?)
+- NSFW Tag / Options
 
