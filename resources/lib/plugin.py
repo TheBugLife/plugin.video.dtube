@@ -23,20 +23,22 @@ plugin = routing.Plugin()
 # Get the plugin url in plugin:// notation.
 _url = sys.argv[0]
 
-def get_trending():
+
+def get_frontpage(category):
     videos = []
-    trendurl = "https://api.steemjs.com/getState?path=/trending/dtube&scope=content"
+    trendurl = "https://api.steemjs.com/getState?path=/" + category + "/dtube&scope=content"
     data = json.loads(requests.get(trendurl).text)
     for results in data:
         vidjson = "https://steemit.com/dtube/@" + results.split('/')[0] + "/" + results.split('/')[1] + ".json"
         viddata = json.loads(requests.get(vidjson).text)
         if "video" in viddata['post']['json_metadata']:
-            dtubeitem = {'name': viddata['post']['pending_payout_value'] + " | " + viddata['post']['json_metadata']['video']['info']['title'],
-                         'thumb': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['info']['snaphash'],
+            dtubeitem = {'name': viddata['post']['pending_payout_value'] + " | " +
+                                 viddata['post']['json_metadata']['video']['info']['title'],
+                         'thumb': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['info'][
+                             'snaphash'],
                          'video': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['content'][
                              'video480hash'], 'genre': 'trending'}
             videos.append(dtubeitem)
-
     return videos
 
 
@@ -55,11 +57,13 @@ def get_url(**kwargs):
 @plugin.route('/')
 def index():
     xbmcplugin.addDirectoryItem(plugin.handle, plugin.url_for(
-        show_category, "one"), xbmcgui.ListItem("Category One"), True)
-    xbmcplugin.addDirectoryItem(plugin.handle, plugin.url_for(
-        show_category, "two"), xbmcgui.ListItem("Category Two"), True)
-    xbmcplugin.addDirectoryItem(plugin.handle, plugin.url_for(
         show_category, "trending"), xbmcgui.ListItem("Trending"), True)
+    xbmcplugin.addDirectoryItem(plugin.handle, plugin.url_for(
+        show_category, "created"), xbmcgui.ListItem("New"), True)
+    xbmcplugin.addDirectoryItem(plugin.handle, plugin.url_for(
+        show_category, "hot"), xbmcgui.ListItem("Hot"), True)
+    xbmcplugin.addDirectoryItem(plugin.handle, plugin.url_for(
+        show_category, "promoted"), xbmcgui.ListItem("Promoted"), True)
     xbmcplugin.endOfDirectory(plugin.handle)
 
 
@@ -75,6 +79,7 @@ def play_video(path):
     # Pass the item to the Kodi player.
     xbmcplugin.setResolvedUrl(plugin.handle, True, listitem=play_item)
 
+
 @plugin.route('/category/<category_id>')
 def show_category(category_id):
     # Set plugin category. It is displayed in some skins as the name
@@ -85,12 +90,13 @@ def show_category(category_id):
         play_video(params['video'])
     else:
         xbmcplugin.setPluginCategory(int(sys.argv[1]), category_id)
-        if category_id == 'trending':
+        if (category_id == 'trending') or (category_id == 'created') or (category_id == 'hot') or (
+                category_id == 'promoted'):
             # Set plugin content. It allows Kodi to select appropriate views
             # for this type of content.
             xbmcplugin.setContent(plugin.handle, 'videos')
 
-            videos = get_trending()
+            videos = get_frontpage(category_id)
             for video in videos:
                 list_item = xbmcgui.ListItem(label=video['name'])
                 list_item.setInfo('video', {'title': video['name'],
@@ -106,7 +112,6 @@ def show_category(category_id):
             xbmcplugin.addDirectoryItem(
                 plugin.handle, "", xbmcgui.ListItem("Hello category %s!" % category_id))
             xbmcplugin.endOfDirectory(plugin.handle)
-
 
 
 def run():

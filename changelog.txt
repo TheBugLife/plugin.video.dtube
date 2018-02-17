@@ -1,3 +1,8 @@
+v0.0.6
+- Added Hot, New, and Promoted categories.
+- Removed old test categories
+v0.0.6
+- Bugfix
 v0.0.5
 - Include payout in video title
 v0.0.4
