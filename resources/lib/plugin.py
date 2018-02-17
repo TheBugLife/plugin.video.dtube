@@ -30,12 +30,12 @@ def get_trending():
     for results in data:
         vidjson = "https://steemit.com/dtube/@" + results.split('/')[0] + "/" + results.split('/')[1] + ".json"
         viddata = json.loads(requests.get(vidjson).text)
-        dtubeitem = {'name': viddata['post']['pending_payout_value'] + " | " + viddata['post']['json_metadata']['video']['info']['title'],
-                     'thumb': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['info']['snaphash'],
-                     'video': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['content'][
-                         'video480hash'],
-                     'genre': 'trending'}
-        videos.append(dtubeitem)
+        if "video" in viddata['post']['json_metadata']:
+            dtubeitem = {'name': viddata['post']['pending_payout_value'] + " | " + viddata['post']['json_metadata']['video']['info']['title'],
+                         'thumb': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['info']['snaphash'],
+                         'video': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['content'][
+                             'video480hash'], 'genre': 'trending'}
+            videos.append(dtubeitem)
 
     return videos
 
