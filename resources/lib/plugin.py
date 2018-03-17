@@ -37,7 +37,7 @@ def get_frontpage(category):
                          'thumb': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['info'][
                              'snaphash'],
                          'video': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['content'][
-                             'video480hash'], 'genre': 'trending'}
+                             'videohash'], 'genre': 'trending'}
             videos.append(dtubeitem)
     return videos
 
