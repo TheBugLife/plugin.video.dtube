@@ -1,3 +1,5 @@
+v0.0.8
+- bugfix
 v0.0.6
 - Added Hot, New, and Promoted categories.
 - Removed old test categories
