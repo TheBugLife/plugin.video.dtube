@@ -37,7 +37,10 @@ def get_frontpage(category):
                          'thumb': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['info'][
                              'snaphash'],
                          'video': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['content'][
-                             'videohash'], 'genre': 'trending'}
+                             'videohash'],
+                         'description': "https://ipfs.io/ipfs/" + viddata['post']['json_metadata']['video']['content'][
+                             'description'],
+                         'genre': 'trending'}
             videos.append(dtubeitem)
     return videos
 
@@ -101,6 +104,7 @@ def show_category(category_id):
                 list_item = xbmcgui.ListItem(label=video['name'])
                 list_item.setInfo('video', {'title': video['name'],
                                             'genre': video['genre'],
+                                            'plot': video['description'],
                                             'mediatype': 'video'})
                 list_item.setArt({'thumb': video['thumb'], 'icon': video['thumb'], 'fanart': video['thumb']})
                 list_item.setProperty('IsPlayable', 'true')
